@@ -20,7 +20,7 @@ const (
 //
 // Time(someT) -> "3 weeks ago"
 func Time(then time.Time) string {
-	return RelTime(then, time.Now(), "ago", "from now")
+	return RelTime(then, time.Now(), "há", "trás")
 }
 
 // A RelTimeMagnitude struct contains a relative time point at which
@@ -45,23 +45,23 @@ type RelTimeMagnitude struct {
 }
 
 var defaultMagnitudes = []RelTimeMagnitude{
-	{time.Second, "now", time.Second},
-	{2 * time.Second, "1 second %s", 1},
-	{time.Minute, "%d seconds %s", time.Second},
-	{2 * time.Minute, "1 minute %s", 1},
-	{time.Hour, "%d minutes %s", time.Minute},
-	{2 * time.Hour, "1 hour %s", 1},
-	{Day, "%d hours %s", time.Hour},
-	{2 * Day, "1 day %s", 1},
-	{Week, "%d days %s", Day},
-	{2 * Week, "1 week %s", 1},
-	{Month, "%d weeks %s", Week},
-	{2 * Month, "1 month %s", 1},
-	{Year, "%d months %s", Month},
-	{18 * Month, "1 year %s", 1},
-	{2 * Year, "2 years %s", 1},
-	{LongTime, "%d years %s", Year},
-	{math.MaxInt64, "a long while %s", 1},
+	{time.Second, "agora", time.Second},
+	{2 * time.Second, "%s 1 segundo", 1},
+	{time.Minute, "%s %d segundos", time.Second},
+	{2 * time.Minute, "%s 1 minuto", 1},
+	{time.Hour, "%s %d minutos", time.Minute},
+	{2 * time.Hour, "%s 1 hora", 1},
+	{Day, "%s %d horas", time.Hour},
+	{2 * Day, "%s 1 dia", 1},
+	{Week, "%s %d dias", Day},
+	{2 * Week, "%s 1 semana", 1},
+	{Month, "%s %d semanas", Week},
+	{2 * Month, "%s 1 mês", 1},
+	{Year, "%s %d meses", Month},
+	{18 * Month, "%s 1 ano", 1},
+	{2 * Year, "%s 2 anos", 1},
+	{LongTime, "%s %d anos", Year},
+	{math.MaxInt64, "%s tempo atrás", 1},
 }
 
 // RelTime formats a time into a relative string.
