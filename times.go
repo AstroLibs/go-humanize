@@ -20,10 +20,11 @@ const (
 //
 // Time(someT) -> "3 weeks ago"
 func Time(then time.Time) string {
-	return RelTime(then, time.Now(), "há", "trás")
+	loc, _ := time.LoadLocation("America/Sao_Paulo")
+
+	return RelTime(then, time.Now().In(loc), "há", "trás")
 }
 
-// A RelTimeMagnitude struct contains a relative time point at which
 // the relative format of time will switch to a new format string.  A
 // slice of these in ascending order by their "D" field is passed to
 // CustomRelTime to format durations.
